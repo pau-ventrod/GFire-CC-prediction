@@ -50,6 +50,7 @@ def index_matrix(df, XCENT, YCENT, CELLSIZE):
 
     # Concatenating all 3 dimensions into a dataframe
     df = pd.concat([xdf.stack(), ydf.stack(), df.stack()], axis=1).reset_index(drop=True)
+    df.columns = ['x_point','y_point','real_z']
     
     return df
 
