@@ -9,6 +9,8 @@ We are currently working on Canopy Cover prediction. Canopy Cover is described a
 
 Members of the team:
 
-Alejandro Donaire:
-Èric Sánchez: ericsanlopez@gmail.com | 
-Pau Ventura: pau.ventura.rodriguez@gmail.com | https://www.linkedin.com/in/pauvr
+- Alejandro Donaire:
+
+- Èric Sánchez: ericsanlopez@gmail.com | 
+
+- Pau Ventura: pau.ventura.rodriguez@gmail.com | https://www.linkedin.com/in/pauvr
