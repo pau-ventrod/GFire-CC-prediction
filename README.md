@@ -19,5 +19,6 @@ We are currently working on Canopy Cover prediction. Canopy Cover is described a
 ### Current scores
 
 |                   | Toy Dataset | Nonzerogt Dataset |
+|-------------------|-------------|-------------------|
 | Threshold method  | 0.754       | 0.485             |
 | Vegetation method | 0.675       | 0.392             |
