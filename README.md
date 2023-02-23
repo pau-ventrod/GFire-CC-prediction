@@ -14,3 +14,10 @@ We are currently working on Canopy Cover prediction. Canopy Cover is described a
 - Èric Sánchez: ericsanlopez@gmail.com | 
 
 - Pau Ventura: pau.ventura.rodriguez@gmail.com | https://www.linkedin.com/in/pauvr
+
+
+### Current scores
+
+|                   | Toy Dataset | Nonzerogt Dataset |
+| Threshold method  | 0.754       | 0.485             |
+| Vegetation method | 0.675       | 0.392             |
