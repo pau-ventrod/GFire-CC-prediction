@@ -7,6 +7,24 @@ Our work consists on building Machine Learning models to predict some of the par
 
 We are currently working on Canopy Cover prediction. Canopy Cover is described as the percentage of the area that is covered with canopy if it is seen from the sky.
 
+### Datasets information
+
+(ALE)
+
+
+### Current scores
+The Score metric used will be r-squared, as it gives a value between (-1, 1), being 1 the best possible value, that shows how correlated are two arrays (in this case the predicted and the real values of the canopy cover).
+
+
+|                   | Toy Dataset | Nonzerogt Dataset |
+|-------------------|-------------|-------------------|
+| Threshold method  | 0.754       | 0.485             |
+| Vegetation method | 0.675       | 0.392             |
+
+
+Note that the Nonzerogt Dataset has less accuracy than the others. This is due to the fact that having 0 values on the groundtruth apparently drastically increases the metric value.
+
+
 ### Members of the team:
 
 - Alejandro Donaire:
@@ -14,11 +32,3 @@ We are currently working on Canopy Cover prediction. Canopy Cover is described a
 - Èric Sánchez: ericsanlopez@gmail.com | 
 
 - Pau Ventura: pau.ventura.rodriguez@gmail.com | https://www.linkedin.com/in/pauvr
-
-
-### Current scores
-
-|                   | Toy Dataset | Nonzerogt Dataset |
-|-------------------|-------------|-------------------|
-| Threshold method  | 0.754       | 0.485             |
-| Vegetation method | 0.675       | 0.392             |
