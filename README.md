@@ -7,7 +7,7 @@ Our work consists on building Machine Learning models to predict some of the par
 
 We are currently working on Canopy Cover prediction. Canopy Cover is described as the percentage of the area that is covered with canopy if it is seen from the sky.
 
-Members of the team:
+### Members of the team:
 
 - Alejandro Donaire:
 
