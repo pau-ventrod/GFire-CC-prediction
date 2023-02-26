@@ -42,6 +42,6 @@ Note that the Nonzerogt Dataset has less accuracy than the others. This is due t
 
 - Alejandro Donaire: aledonairesa@gmail.com | https://www.linkedin.com/in/alejandro-donaire
 
-- Èric Sánchez: ericsanlopez@gmail.com | 
+- Èric Sánchez: ericsanlopez@gmail.com | www.linkedin.com/in/ericsanlopez
 
 - Pau Ventura: pau.ventura.rodriguez@gmail.com | https://www.linkedin.com/in/pauvr
