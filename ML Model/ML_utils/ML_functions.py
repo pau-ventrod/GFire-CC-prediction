@@ -73,23 +73,8 @@ class FeatureExtractor:
         input_data = input_data.drop(['z', 'surface_z', 'height_merging_x', 'height_merging_y'], axis=1)
         
         return input_data
-    
-    def not_cassified_pts(self, name='not_classified_pts'):
-        # NEW
-        '''
-        Number of points that are not vegetation nor ground.
         
-        Parameters
-        ----------
-        name : name of the resulting series object (that will eventually be the column name in the dataset)        
-        '''
-        aux_arr = self.data.query('c not in [3, 4, 5, 6, 7]').copy()
-        
-        aux_arr = aux_arr.groupby([self.xp, self.yp])[self.c].count()
-        
-        return aux_arr.rename(name)
-        
-           
+    # Angle oriented features     
     def angle_mean(self, name='angle_mean'):
         # NEW
         '''
@@ -139,6 +124,8 @@ class FeatureExtractor:
         values = self.grouped[self.a].max()
         return values.rename(name, inplace=True)
     
+    
+    # Height oriented features
     def height_quantile(self, quant, name='height_Q'):
         """
         Quantile value of the height array of that point.
@@ -150,8 +137,8 @@ class FeatureExtractor:
         """
         values = self.grouped['height'].quantile(quant)
         return values.rename(name+str(round(quant,2)), inplace=True)
-        
-    def threshold_percentage(self, threshold, name='above_threshold_pct_'):
+    
+    def height_threshold_percentage(self, threshold, name='above_threshold_pct_'):
         """
         Percentage of points above a certain threshold.
         
@@ -177,7 +164,7 @@ class FeatureExtractor:
         
         return my_block
     
-    def sd_height(self, name='sd_height'):
+    def height_sd(self, name='sd_height'):
         '''
         The standard deviation of the height Array of that point.
         
@@ -188,7 +175,7 @@ class FeatureExtractor:
         values = self.grouped['height'].std()
         return values.rename(name, inplace=True)
         
-    def max_height_diff(self, name='max_height_diff'):
+    def height_max_diff(self, name='max_height_diff'):
         """
         The difference between the highest LiDAR point and the lowest LiDAR point.
         
@@ -211,7 +198,7 @@ class FeatureExtractor:
         
         return values.rename({'height':name}, axis=1)
     
-    def mean_height(self, name='mean_height'):
+    def height_mean(self, name='mean_height'):
         """
         Mean height with respect to the geoid.
          
@@ -222,7 +209,8 @@ class FeatureExtractor:
         values = self.grouped['height'].mean()
         return values.rename(name, inplace=True)
     
-    def num_pixels(self, name='num_pixels'):
+    # Points (pixels) oriented features
+    def pts_number(self, name='num_pixels'):
         """
         Number of pixels of each point.
         
@@ -233,7 +221,7 @@ class FeatureExtractor:
         values = self.grouped.count()[self.x]
         return values.rename(name, inplace=True)
     
-    def num_ground(self, name='num_ground'):
+    def pts_num_ground(self, name='num_ground'):
         """
         Number of pixels classified as "ground".
         
@@ -245,7 +233,7 @@ class FeatureExtractor:
         values = filtered.groupby([self.xp, self.yp]).count()[self.x]
         return values.rename(name, inplace=True)
     
-    def num_low_vegetation(self, name='num_low_vegetation'):
+    def pts_num_low_vegetation(self, name='num_low_vegetation'):
         """
         Number of pixels classified as "low vegetation".
         
@@ -257,7 +245,7 @@ class FeatureExtractor:
         values = filtered.groupby([self.xp, self.yp]).count()[self.x]
         return values.rename(name, inplace=True)
     
-    def num_medium_vegetation(self, name='num_medium_vegetation'):
+    def pts_num_medium_vegetation(self, name='num_medium_vegetation'):
         """
         Number of pixels classified as "medium vegetation".
         
@@ -269,7 +257,7 @@ class FeatureExtractor:
         values = filtered.groupby([self.xp, self.yp]).count()[self.x]
         return values.rename(name, inplace=True)
     
-    def num_high_vegetation(self, name='num_high_vegetation'):
+    def pts_num_high_vegetation(self, name='num_high_vegetation'):
         """
         Number of pixels classified as "high vegetation".
         
@@ -281,7 +269,7 @@ class FeatureExtractor:
         values = filtered.groupby([self.xp, self.yp]).count()[self.x]
         return values.rename(name, inplace=True)
     
-    def num_building(self, name='num_building'):
+    def pts_num_building(self, name='num_building'):
         """
         Number of pixels classified as "building".
         
@@ -293,7 +281,7 @@ class FeatureExtractor:
         values = filtered.groupby([self.xp, self.yp]).count()[self.x]
         return values.rename(name, inplace=True)
     
-    def num_low_point(self, name='num_low_point'):
+    def pts_num_low_point(self, name='num_low_point'):
         """
         Number of pixels classified as "low point".
         
@@ -304,3 +292,17 @@ class FeatureExtractor:
         filtered = self.data[self.data[self.c]==7] # 7 corresponds to "low point"
         values = filtered.groupby([self.xp, self.yp]).count()[self.x]
         return values.rename(name, inplace=True)
+    
+    def pts_not_cassified(self, name='not_classified_pts'):
+        '''
+        Number of points that are not vegetation nor ground.
+        
+        Parameters
+        ----------
+        name : name of the resulting series object (that will eventually be the column name in the dataset)        
+        '''
+        aux_arr = self.data.query('c not in [3, 4, 5, 6, 7]').copy()
+        
+        aux_arr = aux_arr.groupby([self.xp, self.yp])[self.c].count()
+        
+        return aux_arr.rename(name)
